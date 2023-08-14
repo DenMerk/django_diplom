@@ -1,0 +1,27 @@
+POST http://127.0.0.1:8000/export
+Content-Type: application/yaml
+Authorization: Token 59c288d7ebc54b96add8b57aeff1e6f831797030
+
+goods:
+  - id: 4216292
+    category: 224
+    model: apple/iphone/xs-max
+    name: Смартфон Apple iPhone XS Max 512GB (золотистый)
+    price: 110000
+    price_rrc: 116990
+    quantity: 14
+    parameters:
+      "Диагональ (дюйм)": 6.5
+      "Разрешение (пикс)": 2688x1242
+      "Встроенная память (Гб)": 512
+      "Цвет": золотистый
+
+###
+
+POST http://127.0.0.1:8000/entry/
+Content-Type: application/json
+
+{
+    "email": "user2@user.com",
+    "password": "user2"
+}
