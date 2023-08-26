@@ -73,6 +73,7 @@ coverage.xml
 */migrations/*
 .log
 db.sqlite3
+orders/goods/migrations/
 
 
 # Scrapy stuff:

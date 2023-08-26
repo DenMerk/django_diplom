@@ -1,6 +1,6 @@
-POST http://127.0.0.1:8000/export
+POST http://127.0.0.1:8000/export/
 Content-Type: application/yaml
-Authorization: Token 59c288d7ebc54b96add8b57aeff1e6f831797030
+Authorization: Token a4904cebaf8a269a3cb133de3951d769072d78a7
 
 goods:
   - id: 4216292
@@ -15,6 +15,42 @@ goods:
       "Разрешение (пикс)": 2688x1242
       "Встроенная память (Гб)": 512
       "Цвет": золотистый
+  - id: 4216313
+    category: 224
+    model: apple/iphone/xr
+    name: Смартфон Apple iPhone XR 256GB (красный)
+    price: 65000
+    price_rrc: 69990
+    quantity: 15
+    parameters:
+      "Диагональ (дюйм)": 6.1
+      "Разрешение (пикс)": 1792x828
+      "Встроенная память (Гб)": 256
+      "Цвет": красный
+  - id: 4216226
+    category: 224
+    model: apple/iphone/xr
+    name: Смартфон Apple iPhone XR 256GB (черный)
+    price: 65000
+    price_rrc: 69990
+    quantity: 25
+    parameters:
+      "Диагональ (дюйм)": 6.1
+      "Разрешение (пикс)": 1792x828
+      "Встроенная память (Гб)": 256
+      "Цвет": черный
+  - id: 4672670
+    category: 224
+    model: apple/iphone/xr
+    name: Смартфон Apple iPhone XR 128GB (синий)
+    price: 60000
+    price_rrc: 64990
+    quantity: 37
+    parameters:
+      "Диагональ (дюйм)": 6.1
+      "Разрешение (пикс)": 1792x828
+      "Встроенная память (Гб)": 256
+      "Цвет": синий
 
 ###
 
@@ -25,3 +61,128 @@ Content-Type: application/json
     "email": "user2@user.com",
     "password": "user2"
 }
+
+###
+
+GET http://127.0.0.1:8000/products/
+Content-Type: application/json
+
+
+###
+GET http://127.0.0.1:8000/products/13/
+Content-Type: application/json
+
+###
+
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+  "last_name": "Бегемотов",
+  "first_name": "Альберт",
+  "middle_name": "Степанович",
+  "email": "user9@user.com",
+  "password": "user9",
+  "password_repeat": "user9",
+  "company": "Begemotov_and_sons",
+  "type": "distributor",
+  "username": "user9",
+  "phone": "+79991234578",
+  "status": "True",
+  "city": "Moscow",
+  "street": "Polyanka",
+  "building": "22",
+  "office": "123а"
+}
+###
+
+DELETE  http://127.0.0.1:8000/entry/6/
+Content-Type: application/json
+Authorization: Token 58cc14ae67e65225c70e0382445fa2d4c3ffa755
+
+###
+
+PATCH http://127.0.0.1:8000/entry/7/
+Content-Type: application/json
+Authorization: Token 6d5f4a240df4ae37b0eb936e3355f1c8c2b69cc4
+
+{
+  "status": "True"
+}
+
+###
+
+POST http://127.0.0.1:8000/basket/
+Content-Type: application/json
+
+{
+  "product": "Смартфон Apple iPhone XS Max 512GB (золотистый)",
+  "distributor": "Меркурьев",
+  "quantity": "5"
+}
+
+###
+
+PATCH http://127.0.0.1:8000/basket/17/
+Content-Type: application/json
+
+{
+    "distributor": "Pavlov",
+    "quantity": "2"
+    
+}
+
+###
+
+GET http://127.0.0.1:8000/basket/24/
+Content-Type: application/json
+
+###
+
+DELETE http://127.0.0.1:8000/basket/15/
+Content-Type: application/json
+
+###
+
+POST http://127.0.0.1:8000/confirmation/
+Content-Type: application/json
+
+{
+  "last_name": "Alekseev",
+  "first_name": "Aleksey",
+  "middle_name": "Alekseevich",
+  "email": "user6@user.com",
+  "phone": "+79991234568",
+  "address": {
+     "city": "Moscow",
+     "street": "Radio",
+     "building": "15a",
+     "office": "32"
+  },
+  "basket": "24"
+}
+
+###
+
+GET http://127.0.0.1:8000/order/2/
+Content-Type: application/json
+
+
+###
+
+GET http://127.0.0.1:8000/orders/
+Content-Type: application/json
+
+###
+
+PATCH http://127.0.0.1:8000/order_status/5/
+Content-Type: application/json
+
+{
+  "status": "delivered"
+}
+
+###
+
+GET http://127.0.0.1:8000/order_history/3/
+Content-Type: application/json

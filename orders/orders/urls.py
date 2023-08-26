@@ -16,12 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from goods.views import PartnerUpdate, LoginAPIView, RegisterAPIView, ProductViewSet
+from goods.views import PartnerUpdate, LoginAPIView, RegisterAPIView, ProductViewSet, BasketViewSet, \
+    OrderConfirmationViewSet, OrderAPIView, OrderMetaViewSet, OrderChangeStatusViewSet, OrderHistoryViewSet
 from rest_framework.routers import DefaultRouter
 
 
 router = DefaultRouter()
 router.register(r'products', ProductViewSet, basename='products')
+router.register(r'basket', BasketViewSet, basename='basket')
+router.register(r'confirmation', OrderConfirmationViewSet, basename='confirmation')
+router.register(r'orders', OrderMetaViewSet, basename='orders')
+router.register(r'order_status', OrderChangeStatusViewSet, basename='order_status')
+router.register(r'order_history', OrderHistoryViewSet, basename='order_history')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -29,6 +35,7 @@ urlpatterns = [
     path('entry/', LoginAPIView.as_view()),
     path('entry/<pk>/', LoginAPIView.as_view()),
     path('register/', RegisterAPIView.as_view()),
+    path('order/<pk>/', OrderAPIView.as_view()),
 
 
 ] + router.urls
